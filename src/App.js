@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useReducer } from 'react';
 
-function App() {
+import './App.css'
+import { Input, Select, Button } from 'antd';
+import { submitAPI } from './api';
+const { Option } = Select;
+
+const initFormData = {
+  errorMessage: "",
+  name: "",
+  email: "",
+  phone: "",
+  male: "",
+}
+
+const handleSubmit = (formData) => {
+  // submit formData using submitAPI
+}
+
+const formReducer = (formData = initFormData, action) => formData
+
+export default () => {
+  const [formData, dispatch] = useReducer(formReducer, initFormData)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 id="error" style={{ color: "red" }}>{formData.errorMessage}</h1>
+      <Input className="input" placeholder="ชื่อ - นามสกุล" />
+      <Input className="input" placeholder="email" />
+      <Input className="input" placeholder="phone" />
+      <Select className="input" defaultValue="male">
+        <Option value="male">ชาย</Option>
+        <Option value="female">หญิง</Option>
+      </Select>
+      <Button type="primary">submit</Button>
     </div>
   );
 }
-
-export default App;
