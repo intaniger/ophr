@@ -30,7 +30,7 @@ export default () => {
       <Select className="input" defaultValue="male">
         <Option value="male">ชาย</Option>
         <Option value="female">หญิง</Option>
-      </Select>
+      </Select> <br />
       <Button type="primary">submit</Button>
     </div>
   );
